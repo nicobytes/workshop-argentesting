@@ -1,21 +1,21 @@
-````
-export class Person {
+import { Person } from './person.model';
 
-  constructor(
-    public name: string,
-    public lastname: string,
-    public age: number,
-    public weight: number,
-    public height: number
-  ) {}
+describe('Test for person', () => {
 
-  calcIMG() {
-  }
-}
+  let person;
 
-```
-````
-describe('test for data', () => {
+  // Arrange
+  beforeEach(() => {
+    person = new Person(
+      'nicolas',
+      'molina',
+      23,
+      40,
+      1.65
+    );
+  });
+
+  describe('test for data', () => {
 
     it('attributes', () => {
       expect(person.name).toEqual('nicolas');
@@ -26,10 +26,8 @@ describe('test for data', () => {
     });
 
   });
-````
 
-````
-describe('test for calcIMC', () => {
+  describe('test for calcIMC', () => {
 
     it('should return a string: down', () => {
       person.weight = 40;
@@ -71,44 +69,5 @@ describe('test for calcIMC', () => {
 
 
   });
-````
 
-````
-calcIMC(): string {
-  const result = Math.round(this.weight / ((this.height) * (this.height)));
-  if (result < 18) {
-    return 'down';
-  } else if (result >= 18 && result <= 24) {
-    return 'normal';
-  } else if (result >= 25 && result <= 26) {
-    return 'overweight';
-  } else if (result >= 27 && result <= 29) {
-    return 'overweight level 1';
-  } else if (result >= 30 && result <= 39) {
-    return 'overweight level 2';
-  } else if (result >= 40) {
-    return 'overweight level 3';
-  }
-}
-```
-
-````
-calcIMC(): string {
-  const result = Math.round(this.weight / ((this.height) * (this.height)));
-  if (result < 0) {
-    return 'no found';
-  } else if (result >= 0 && result < 18) {
-    return 'down';
-  } else if (result >= 18 && result <= 24) {
-    return 'normal';
-  } else if (result >= 25 && result <= 26) {
-    return 'overweight';
-  } else if (result >= 27 && result <= 29) {
-    return 'overweight level 1';
-  } else if (result >= 30 && result <= 39) {
-    return 'overweight level 2';
-  } else if (result >= 40) {
-    return 'overweight level 3';
-  }
-}
-````
+});
